@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block style %} bg-light {% endblock %}
+
+{% block body %}
+
+<div class="container">
+<center>
+<h1 class="mt-5">
+Ticket Booked Successfully!
+</h1>
+</center>
+<br>
+
+<center>
+
+<img width="110" src="https://cdn-icons-png.flaticon.com/512/3034/3034068.png" alt="succes" />
+<center>
+<br>
+<center>
+<form method="POST" action="{% url 'download' %}">
+{% csrf_token %}
+<input type="hidden" name="id" value="{{ticket.id}}">
+<button type="submit" class="btn btn-outline-dark w-100">Download Ticket </button>
+</center>
+</form>
+</div>
+<br>
+<br>
+<br>
+{% endblock %}

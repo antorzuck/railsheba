@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="home">
+  <center>
+  <div class="text-white content">
+  
+  <h1>Where you wanna go?</h1>
+  <form method="GET" action="{% url 'search' %}">
+    
+    <div class="container-fluid row">
+      <div class="col-6 col-md-3">
+        <input type="text" class="form-control" placeholder="From" name="from">
+      </div>
+      <div class="col-6 col-md-3">
+        <input type="text" class="form-control" placeholder="To" name="to">
+      </div>
+      <br>
+      <br>
+      <div class="col-md-3">
+      <input class="container form-control" type="date" name="date">
+      </div>
+      <br>
+      <br>
+      <div class="col-md-3">
+      <button class="w-100 btn btn-success" type="submit">Search</button>
+      </div>
+    </div>
+    
+    
+    
+  </form>
+  </div>
+</center>
+  
+  
+</div>
+
+
+
+
+<!-- home end -->
+
+
+<div class="container content-two">
+<center class="my-5 text-success"><h3>Buy train tickets in 3 easy steps</h3></center>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<div data-aos="fade-up"
+data-aos-duration="600" class="col-md-6 col-lg-4">
+  
+<div class="border-0 bg-light card">
+  <div class="bg-light card-body">
+    <center>
+      <i class="fa-2x text-success fas fa-search"></i>
+    </center>
+  </div>
+  
+</div>
+
+
+<div class="p-1 container">
+<h5 class="text-success">Search</h5>
+<small>Choose your origin, destination, journey dates and search for buses</small>
+</div>
+
+</div>
+
+
+
+<div data-aos="fade-up"
+data-aos-duration="600" class="col-md-6 col-lg-4">
+  
+    
+<div class="border-0 bg-light card">
+  <div class="bg-light card-body">
+    <center>
+     <b><i class="fa-2x text-success fas fa-car"></i> </b>
+    </center>
+  </div>
+  
+</div>
+
+
+<div class="p-1 container">
+<h5 class="text-success">Select</h5>
+<small>Select your desired trip and choose your seats</small>
+</div>
+
+  
+</div>
+
+<div data-aos="fade-up"
+data-aos-duration="600" class="col-md-6 col-lg-4">
+  
+    
+<div class="border-0 bg-light card">
+  <div class="bg-light card-body">
+    <center>
+      <i class="fa-2x text-success fas fa-credit-card"></i>
+    </center>
+  </div>
+  
+</div>
+
+
+<div class="p-1 container">
+<h5 class="text-success">Payment</h5>
+<small>Pay by bank cards, mobile banking, or cash</small>
+</div>
+  
+  
+</div>
+
+
+
+
+</div>
+</div>
+
+
+<div class="container content-two">
+<center class="my-5 text-success"><h3>Why choose us?</h3></center>
+</div>
+<div class="container">
+  <center>
+<ul class="list-group list-group-numbered">
+  <li class="border-0 list-group-item">Buy bus tickets anytime from anywhere
+</li>
+  <li class="border-0 list-group-item">Pay by bank cards, mobile banking, or cash.
+</li>
+  <li class="border-0 list-group-item">Get tickets delivered to your doorstep. *TCA</li>
+  <li class="border-0 list-group-item">Dependable customer service (7 AM to 12 AM</li>
+</ul>
+</center>
+</div>
+
+
+
+
+{% endblock %}

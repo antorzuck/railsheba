@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block class %} bg-light {% endblock %}
+
+{% block body %}
+
+
+  <div class="container">
+      
+      <form method="POST" action="{% url 'ct' %}">
+      {% csrf_token %}
+      <input type="hidden" name="tran" value="{{train.id}}">
+      <select id="ste" onchange="getPrice()"  class="my-3 form-select" size="3" aria-label="size 3 select example">
+        <option selected>Choose start to end point</option>
+        {% for i in tariff %}
+        <option value="{{i.id}}">{{i.starttoend}}</option>
+      {% endfor %}
+      </select>
+      
+      
+      <div class="row">
+        
+        <div class="my-2 col-md-6">
+          
+          <div class="bg-white card">
+            <div class="bg-white card-body">
+            <div class="float-start d-inline-block">
+            {% for i in ls %}
+           
+              <button class="btn btn-{% if i.is_booked %}danger{% else %}info{% endif %}">{{i.seat}}</button>
+              <br>
+              <br>
+             
+              {% endfor %}
+            </div>
+              {% for t in rs %}
+              <button class="float-end btn btn-{% if i.is_booked %}danger{% else %}info{% endif %}">{{t.seat}}</button>
+              <br>
+              <br>
+              {% endfor %}
+              
+              
+              <select name="seats" class="mt-4 form-select" size="3" multiple aria-label="size 3 select example">
+                <option disabled selected>Select Seats</option>
+                {% for s in train.seats.all %}
+
+                <option {% if s.is_booked %} disabled {% endif %} value="{{s.id}}">{{s.seat}}</option>
+              {% endfor %}
+              </select>
+            </div>
+          </div>
+          
+          
+          
+        </div>
+        
+        
+        
+        <!-- faka faka faka -->
+        
+        <div class="my-2 col-md-6">
+          
+          <div class="card bg-white">
+            
+            <div class="card-body bg-white">
+              <h5 class="mb-3">Passenger info</h5>
+              <input name="pn" class="form-control" type="text" placeholder="Passenger name">
+              <br />
+              <input name="pa" class="form-control" type="text" placeholder="Passenger age">
+            </div>
+            
+          </div>
+          
+          <div class="bg-white card my-2">
+            <div class="card-body bg-white">
+              <h4 class="d-inline-block">Total Price</h4>
+              
+              <h4  class="float-end">{{price}}</h4>
+            </div>
+            
+          </div>
+          
+          
+        </div>
+        
+        
+      </div>
+      
+      <input type="hidden" value="{{price}}" name="pric">
+      <button class="btn btn-dark w-100" type="submit">Download Ticket!</button>
+      
+      
+      </form>
+    </div>
+    
+<script>
+
+function getPrice(){
+
+d = document.getElementById('ste').value
+ window.location.href = window.location.pathname + `?sp=${d}`
+}
+
+</script>
+  
+
+
+
+{% endblock %}

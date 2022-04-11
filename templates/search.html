@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block class %} bg-light {% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+    
+    {% if not trains %}
+    <center> 
+    <h5 class="mt-5 text-success">Sorry, no train available on this date!</h5>
+    <img class="my-3" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_b0OXbXaAIR5QREc8OVZq8YniBuEzbJxq3vrZu6QqNlEhOpKruUw5AiqWdoAL8lmckW7b6cKq6UbEeLshsHVsho7zOXhYCCVu5lPoX-T4S5KItq774RQLCcQZ6NRDfj8QrjnvH1JnYMJZTBaj9HiHUgf2HSoB5aBqXryxxnrskRuahFGWk6WEqzDVnw/s320/856347.png" alt="no train available" />
+    
+    {% endif %}
+    
+  {% for train in trains %}
+    <div class="my-3 bg-white card">
+      <div class="bg-white card-body">
+      <b class="text-warning">{{train.train_name}}</b>
+      
+      <b class="text-success d-inline-block float-end">৳{{train.price}}</b>
+        <br>
+        <small>From: {{train.start_point}}</small>
+        <br>
+        <small>To: {{train.end_point}}</small>
+        <br>
+        <small>Time: {{train.time}}</small>
+        <br>
+        <br />
+        <a class="w-100 btn btn-dark" href="{% url 'ticket' train.id %}">Get Ticket</a>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+
+
+
+
+{% endblock %}
